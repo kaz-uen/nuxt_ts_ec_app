@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import TheBaseSection from './components/TheBaseSection.vue';
 import type { Member } from '@/interfaces';
 
 useState<Map<number, Member>>(
@@ -13,13 +12,9 @@ useState<Map<number, Member>>(
 </script>
 
 <template>
-  <header>
-    <h1>ルーティング</h1>
-  </header>
-  <main>
+  <NuxtLayout>
     <NuxtPage />
-  </main>
-  <!-- <TheBaseSection /> -->
+  </NuxtLayout>
 </template>
 
 <style>
