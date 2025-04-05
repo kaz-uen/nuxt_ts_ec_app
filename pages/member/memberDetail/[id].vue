@@ -1,6 +1,16 @@
 <script setup lang="ts">
 import type { Member } from '@/interfaces';
 
+const PAGE_TITLE = "会員詳細情報";
+
+useHead({
+  title: PAGE_TITLE,
+})
+
+definePageMeta({
+  layout: "member"
+})
+
 const route = useRoute();
 const memberList = useState<Map<number, Member>>("memberList");
 const member = computed(
@@ -22,16 +32,15 @@ const localNote = computed(
 </script>
 
 <template>
-  <h1>会員管理</h1>
   <nav id="breadcrumbs">
     <ul>
       <li><NuxtLink :to="{name: 'index'}">TOP</NuxtLink></li>
       <li><NuxtLink :to="{name: 'member-memberList'}">会員リスト</NuxtLink></li>
-      <li>会員詳細情報</li>
+      <li>{{ PAGE_TITLE }}</li>
     </ul>
   </nav>
   <section>
-    <h2>会員詳細情報</h2>
+    <h2>{{ PAGE_TITLE }}</h2>
     <dl>
       <dt>ID</dt>
       <dd>{{ member.id }}</dd>

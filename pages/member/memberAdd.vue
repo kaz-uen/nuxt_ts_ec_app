@@ -1,6 +1,16 @@
 <script setup lang="ts">
 import type { Member } from '@/interfaces';
 
+const PAGE_TITLE = "会員情報追加";
+
+useHead({
+  title: PAGE_TITLE,
+})
+
+definePageMeta({
+  layout: "member"
+})
+
 const router = useRouter();
 const memberList = useState<Map<number, Member>>("memberList");
 const member: Member = reactive(
@@ -20,16 +30,15 @@ const onAdd = (): void => {
 </script>
 
 <template>
-  <h1>会員管理</h1>
   <nav id="breadcrumbs">
     <ul>
       <li><NuxtLink :to="{name: 'index'}">TOP</NuxtLink></li>
       <li><NuxtLink :to="{name: 'member-memberList'}">会員リスト</NuxtLink></li>
-      <li>会員情報追加</li>
+      <li>{{ PAGE_TITLE }}</li>
     </ul>
   </nav>
   <section>
-    <h2>会員情報追加</h2>
+    <h2>{{ PAGE_TITLE }}</h2>
     <p>情報を入力し、登録ボタンをクリックしてください。</p>
     <form v-on:submit.prevent="onAdd">
       <dl>
